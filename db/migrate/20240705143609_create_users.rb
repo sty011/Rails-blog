@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.text :bio
       t.string :role
       t.boolean :is_active
-
+ 
       t.timestamps
     end
   end
