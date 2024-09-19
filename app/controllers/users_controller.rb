@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    # Fetch users in descending order of creation using the 'recent' scope
+    @users = User.recent
 
     render json: @users
   end
@@ -41,7 +42,9 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      # Use `find_by_id` for Mongoid to handle ObjectId
+      @user = User.find_by(id: params[:id])
+      render json: { error: 'User not found' }, status: :not_found unless @user
     end
 
     # Only allow a list of trusted parameters through.
