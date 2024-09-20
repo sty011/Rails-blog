@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = Comment.recent
 
     render json: @comments
   end
@@ -41,7 +41,9 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      # Use `find_by_id` for Mongoid to handle ObjectId
+      @comment = Comment.find_by(id: params[:id])
+      render json: { error: 'Comment not found' }, status: :not_found unless @comment
     end
 
     # Only allow a list of trusted parameters through.

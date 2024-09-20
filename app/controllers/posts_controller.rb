@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.recent
 
     render json: @posts
   end
@@ -41,7 +41,9 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      # Use `find_by_id` for Mongoid to handle ObjectId
+      @post = Post.find_by(id: params[:id])
+      render json: { error: 'Post not found' }, status: :not_found unless @post
     end
 
     # Only allow a list of trusted parameters through.

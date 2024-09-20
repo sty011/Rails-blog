@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = Category.recent
 
     render json: @categories
   end
@@ -41,7 +41,9 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      # Use `find_by_id` for Mongoid to handle ObjectId
+      @category = Category.find_by(id: params[:id])
+      render json: { error: 'Category not found' }, status: :not_found unless @category
     end
 
     # Only allow a list of trusted parameters through.
