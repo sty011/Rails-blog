@@ -23,14 +23,14 @@ A simple blog API built with Ruby on Rails and MongoDB using the Mongoid ODM (Ob
 - Ruby `3.2.2`
 - Rails `7.1.3.4`
 - MongoDB (Ensure MongoDB is installed and running)
-- Bundler (If not installed, run gem install bundler)
+- Bundler (If not installed, run `gem install bundler`)
 
 ## Setup
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/simple-blog-api.git
+git clone https://github.com/styse/simple-blog-api.git
 cd simple-blog-api
 ```
 
