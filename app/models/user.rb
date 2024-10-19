@@ -1,4 +1,4 @@
-class User
+class User < ApplicationDocument
 
   field :username, type: String
   field :password, type: String

@@ -1,4 +1,4 @@
-class Comment
+class Comment < ApplicationDocument
 
   field :title, type: String
   field :content, type: String

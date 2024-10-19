@@ -1,5 +1,5 @@
-class Post
-  
+class Post < ApplicationDocument
+
   field :title, type: String
   field :content, type: String
   field :excerpt, type: String
