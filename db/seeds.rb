@@ -13,6 +13,7 @@
 User.delete_all
 Category.delete_all
 Post.delete_all
+Comment.delete_all
 
 # Seed Users
 users = User.create!([
@@ -54,5 +55,13 @@ Post.create!([
     category: categories[2]
   }
 ])
+
+# Seed Comments
+comments = Comment.create!([
+  { title: "Great post!", content: "Thanks for sharing!", user: users[0], post: posts[0]},
+  { title: "Interesting read!", content: "I found this informative.", user: users[1], post: posts[1]},
+  { title: "Great travel tips!", content: "Thanks for sharing!", user: users[0], post: posts[2]}
+])
+
 
 puts "Seeding completed successfully!"
