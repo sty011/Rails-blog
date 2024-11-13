@@ -8,43 +8,51 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# db/seeds.rb
 
-# Clear existing users to avoid duplicates
+# Clear existing data
 User.delete_all
+Category.delete_all
+Post.delete_all
 
-# Seed data for users
-User.create!([
+# Seed Users
+users = User.create!([
+  { username: "john_doe", password: "password123", email: "john@example.com", first_name: "John", last_name: "Doe", bio: "Just a regular user.", role: "user", is_active: true },
+  { username: "jane_smith", password: "password123", email: "jane@example.com", first_name: "Jane", last_name: "Smith", bio: "A passionate writer.", role: "admin", is_active: true }
+])
+
+# Seed Categories
+categories = Category.create!([
+  { name: "Technology", description: "All things tech-related" },
+  { name: "Health", description: "Health and wellness topics" },
+  { name: "Travel", description: "Tips and stories from around the world" }
+])
+
+# Seed Posts
+Post.create!([
   {
-    username: "john_doe",
-    password: "password123",
-    email: "john@example.com",
-    first_name: "John",
-    last_name: "Doe",
-    bio: "Just a regular user.",
-    role: "user",
-    is_active: true
+    title: "The Future of Technology",
+    content: "Content about the future of technology...",
+    excerpt: "A glimpse into the future of technology.",
+    slug: "future-of-technology",
+    user: users[0],
+    category: categories[0]
   },
   {
-    username: "jane_smith",
-    password: "password123",
-    email: "jane@example.com",
-    first_name: "Jane",
-    last_name: "Smith",
-    bio: "A passionate writer.",
-    role: "admin",
-    is_active: true
+    title: "Healthy Living Tips",
+    content: "Content about healthy living...",
+    excerpt: "Top tips for a healthy life.",
+    slug: "healthy-living-tips",
+    user: users[1],
+    category: categories[1]
   },
   {
-    username: "mike_brown",
-    password: "password123",
-    email: "mike@example.com",
-    first_name: "Mike",
-    last_name: "Brown",
-    bio: "Loves to code.",
-    role: "user",
-    is_active: false
+    title: "Top Travel Destinations",
+    content: "Content about travel destinations...",
+    excerpt: "Explore the world’s top travel destinations.",
+    slug: "top-travel-destinations",
+    user: users[0],
+    category: categories[2]
   }
 ])
 
-puts "Users seeded successfully!"
+puts "Seeding completed successfully!"
