@@ -51,3 +51,5 @@ gem "rspec-rails", "~> 6.1"
 gem "rswag", "~> 2.13"
 
 gem "mongoid"
+
+gem 'dotenv-rails', groups: [:development, :test]
