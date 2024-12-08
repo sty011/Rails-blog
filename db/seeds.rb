@@ -29,7 +29,7 @@ categories = Category.create!([
 ])
 
 # Seed Posts
-Post.create!([
+posts = Post.create!([
   {
     title: "The Future of Technology",
     content: "Content about the future of technology...",
