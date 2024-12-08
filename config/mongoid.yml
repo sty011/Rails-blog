@@ -4,13 +4,13 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      uri: mongodb://user:password@mongodb.domain.com:27017/blog_api_development
+      # database: rails_blog
+      uri: <%= ENV['MONGODB_URI'] %>
 
-      database: blog_api_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
+      # hosts:
+      #   - localhost:27017
       options:
         # Note that all options listed below are Ruby driver client options (the mongo gem).
         # Please refer to the driver documentation of the version of the mongo gem you are using
@@ -287,7 +287,7 @@ development:
 test:
   clients:
     default:
-      database: blog_api_test
+      database: rails_blog_test
       hosts:
         - localhost:27017
       options:
